@@ -1,0 +1,144 @@
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  padding: 1.5rem 0;
+  transition: all 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.navbar--on-hero .navbar__logo-text {
+  color: var(--cream-50);
+}
+
+.navbar--on-hero .navbar__link {
+  color: rgba(250, 248, 244, 0.75);
+}
+
+.navbar--on-hero .navbar__link:hover,
+.navbar--on-hero .navbar__link--active {
+  color: var(--cream-50);
+}
+
+.navbar--on-hero .navbar__link-indicator {
+  background: var(--cream-50);
+}
+
+.navbar--on-hero .navbar__burger span {
+  background: var(--cream-50);
+}
+
+.navbar--scrolled {
+  background: rgba(250, 248, 244, 0.85);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  padding: 1rem 0;
+  border-bottom: 1px solid var(--cream-200);
+}
+
+.navbar__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.navbar__logo-text {
+  font-family: var(--font-display);
+  font-size: 1.6rem;
+  font-weight: 500;
+  letter-spacing: 0.35em;
+  color: var(--cream-900);
+}
+
+.navbar__nav {
+  display: flex;
+  gap: 2.5rem;
+}
+
+.navbar__link {
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--cream-600);
+  position: relative;
+  padding-bottom: 4px;
+  transition: color 0.4s ease;
+}
+
+.navbar__link:hover,
+.navbar__link--active {
+  color: var(--cream-900);
+}
+
+.navbar__link-indicator {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: var(--cream-800);
+}
+
+.navbar__burger {
+  display: none;
+  flex-direction: column;
+  gap: 6px;
+  width: 28px;
+  padding: 4px 0;
+}
+
+.navbar__burger span {
+  display: block;
+  height: 1px;
+  background: var(--cream-900);
+  transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+  transform-origin: center;
+}
+
+.navbar__burger--open span:first-child {
+  transform: translateY(3.5px) rotate(45deg);
+}
+
+.navbar__burger--open span:last-child {
+  transform: translateY(-3.5px) rotate(-45deg);
+}
+
+.mobile-menu {
+  position: fixed;
+  inset: 0;
+  z-index: 99;
+  background: var(--cream-50);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.mobile-menu__nav {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+}
+
+.mobile-menu__link {
+  font-family: var(--font-display);
+  font-size: 2.5rem;
+  color: var(--cream-600);
+  transition: color 0.3s ease;
+}
+
+.mobile-menu__link--active {
+  color: var(--cream-900);
+}
+
+@media (max-width: 768px) {
+  .navbar__nav {
+    display: none;
+  }
+
+  .navbar__burger {
+    display: flex;
+  }
+}

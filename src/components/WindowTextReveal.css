@@ -1,0 +1,132 @@
+.window-text-reveal {
+  position: relative;
+  display: inline-block;
+  overflow: hidden;
+  max-width: 100%;
+}
+
+.window-text-reveal__content {
+  position: relative;
+  z-index: 1;
+}
+
+/* Volets transparents — le beige reste réservé au hero accueil */
+.window-text-reveal__shutter {
+  position: absolute;
+  top: -4px;
+  bottom: -4px;
+  width: 50.5%;
+  z-index: 3;
+  background: transparent;
+  pointer-events: none;
+}
+
+.window-text-reveal__shutter--left {
+  left: 0;
+  border-right: 1px solid rgba(184, 174, 163, 0.45);
+}
+
+.window-text-reveal__shutter--right {
+  right: 0;
+  border-left: 1px solid rgba(184, 174, 163, 0.45);
+}
+
+.window-text-reveal--light .window-text-reveal__shutter--left {
+  border-right-color: rgba(250, 248, 244, 0.35);
+}
+
+.window-text-reveal--light .window-text-reveal__shutter--right {
+  border-left-color: rgba(250, 248, 244, 0.35);
+}
+
+.window-text-reveal__glass {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.06) 0%,
+    rgba(255, 255, 255, 0.02) 50%,
+    rgba(255, 255, 255, 0.05) 100%
+  );
+  backdrop-filter: blur(1px);
+  -webkit-backdrop-filter: blur(1px);
+}
+
+.window-text-reveal--light .window-text-reveal__glass {
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.1) 0%,
+    rgba(255, 255, 255, 0.03) 50%,
+    rgba(255, 255, 255, 0.08) 100%
+  );
+}
+
+.window-text-reveal__line {
+  position: absolute;
+  top: -4px;
+  bottom: -4px;
+  left: 50%;
+  width: 1px;
+  background: rgba(184, 174, 163, 0.5);
+  z-index: 4;
+  transform-origin: center;
+  pointer-events: none;
+}
+
+.window-text-reveal--light .window-text-reveal__line {
+  background: rgba(250, 248, 244, 0.4);
+}
+
+.window-text-reveal__frame {
+  position: absolute;
+  inset: -6px -8px;
+  border: 1px solid rgba(184, 174, 163, 0.3);
+  z-index: 2;
+  pointer-events: none;
+}
+
+.window-text-reveal--light .window-text-reveal__frame {
+  border-color: rgba(250, 248, 244, 0.2);
+}
+
+/* Espacement titres animés */
+.window-text-reveal.section-title,
+.window-text-reveal.catalogue-hero__title,
+.window-text-reveal.contact-hero__title {
+  display: block;
+  margin-top: 1rem;
+}
+
+.window-text-reveal.home-cta__title {
+  display: block;
+}
+
+.window-text-reveal.home-showcase__title {
+  display: block;
+  margin-top: 1rem;
+  margin-bottom: 0;
+}
+
+.window-text-reveal.about-hero__title {
+  display: block;
+  margin-top: 1rem;
+}
+
+.window-text-reveal--block {
+  display: block;
+  width: 100%;
+}
+
+.section-title em,
+.home-cta__title em,
+.about-hero__title em,
+.contact-hero__title em {
+  font-style: italic;
+  font-weight: 300;
+  color: var(--cream-600);
+}
+
+.about-hero__title em,
+.home-showcase__title em {
+  color: var(--cream-300);
+}

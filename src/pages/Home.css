@@ -1,0 +1,249 @@
+.home-philosophy {
+  padding: var(--section-padding) 0;
+}
+
+.home-philosophy .section-title em {
+  font-style: italic;
+  font-weight: 300;
+  color: var(--cream-600);
+}
+
+.home-philosophy .window-text-reveal {
+  margin-bottom: 0;
+}
+
+.home-services .window-text-reveal {
+  margin-bottom: 0;
+}
+
+.home-philosophy__grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 5rem;
+  align-items: center;
+  margin-top: 4rem;
+}
+
+.home-philosophy__text {
+  font-size: 1.05rem;
+  color: var(--cream-600);
+  line-height: 1.9;
+}
+
+.home-philosophy__image {
+  position: relative;
+  aspect-ratio: 4/5;
+  overflow: hidden;
+  border-radius: 2px;
+}
+
+.parallax-image-wrapper {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.parallax-image {
+  width: 100%;
+  height: 120%;
+  object-fit: cover;
+}
+
+/* Services */
+.home-services {
+  padding: var(--section-padding) 0;
+  background: var(--cream-100);
+}
+
+.home-services__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  margin-top: 4rem;
+}
+
+.service-card {
+  background: var(--cream-50);
+  overflow: hidden;
+  transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.service-card:hover {
+  transform: translateY(-8px);
+}
+
+.service-card__image {
+  position: relative;
+  aspect-ratio: 4/3;
+  overflow: hidden;
+}
+
+.service-card__image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.service-card:hover .service-card__image img {
+  transform: scale(1.05);
+}
+
+.service-card__content {
+  padding: 2rem;
+}
+
+.service-card__content h3 {
+  font-size: 1.6rem;
+  color: var(--cream-900);
+  margin-bottom: 0.75rem;
+}
+
+.service-card__content p {
+  font-size: 0.9rem;
+  color: var(--cream-600);
+  line-height: 1.7;
+}
+
+.service-card__link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 1.5rem;
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--cream-800);
+  transition: gap 0.4s ease;
+}
+
+.service-card__link:hover {
+  gap: 0.85rem;
+}
+
+/* Showcase */
+.home-showcase {
+  position: relative;
+  height: 80vh;
+  min-height: 500px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+}
+
+.home-showcase__image {
+  position: absolute;
+  inset: -20% 0;
+}
+
+.home-showcase__image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.home-showcase__overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(30, 28, 26, 0.55);
+}
+
+.home-showcase__content {
+  position: relative;
+  z-index: 2;
+}
+
+.home-showcase__title {
+  font-size: clamp(2.5rem, 6vw, 4rem);
+  color: var(--cream-50);
+  margin-top: 1rem;
+}
+
+.home-showcase__text {
+  color: var(--cream-300);
+  max-width: 450px;
+  margin-top: 1.5rem;
+  font-size: 1.05rem;
+  line-height: 1.8;
+}
+
+/* Stats */
+.home-stats {
+  padding: 5rem 0;
+  border-bottom: 1px solid var(--cream-200);
+}
+
+.home-stats__grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2rem;
+  text-align: center;
+}
+
+.stat-item__value {
+  display: block;
+  font-family: var(--font-display);
+  font-size: clamp(2.5rem, 5vw, 3.5rem);
+  color: var(--cream-900);
+  line-height: 1;
+}
+
+.stat-item__label {
+  display: block;
+  margin-top: 0.75rem;
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--cream-500);
+}
+
+/* CTA */
+.home-cta {
+  padding: var(--section-padding) 0;
+}
+
+.home-cta__inner {
+  text-align: center;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.home-cta__title {
+  font-size: clamp(2.5rem, 5vw, 3.5rem);
+  color: var(--cream-900);
+}
+
+.home-cta__title em {
+  font-style: italic;
+  font-weight: 300;
+  color: var(--cream-600);
+}
+
+.home-cta__text {
+  color: var(--cream-600);
+  margin-top: 1.5rem;
+  line-height: 1.8;
+}
+
+.home-cta .btn {
+  margin-top: 2.5rem;
+}
+
+@media (max-width: 900px) {
+  .home-philosophy__grid {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+
+  .home-stats__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 500px) {
+  .home-stats__grid {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+}

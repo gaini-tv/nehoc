@@ -1,0 +1,250 @@
+.window-hero {
+  position: relative;
+  height: 100vh;
+  min-height: 700px;
+  overflow: hidden;
+  background: var(--cream-900);
+}
+
+/* Intro splash */
+.window-hero__intro {
+  position: absolute;
+  inset: 0;
+  z-index: 50;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--cream-100);
+  pointer-events: none;
+}
+
+.window-hero__intro-logo {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  letter-spacing: 0.5em;
+  color: var(--cream-900);
+  padding-left: 0.5em;
+}
+
+/* Shutters */
+.window-hero__shutter {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 50.5%;
+  z-index: 40;
+  overflow: hidden;
+}
+
+.window-hero__shutter--left {
+  left: 0;
+}
+
+.window-hero__shutter--right {
+  right: 0;
+}
+
+.window-hero__shutter-inner {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.window-hero__shutter-frame {
+  position: absolute;
+  inset: 0;
+  background: var(--cream-100);
+  border: 1px solid var(--cream-300);
+}
+
+.window-hero__shutter--left .window-hero__shutter-frame {
+  border-right: 3px solid var(--cream-400);
+}
+
+.window-hero__shutter--right .window-hero__shutter-frame {
+  border-left: 3px solid var(--cream-400);
+}
+
+.window-hero__shutter-glass {
+  position: absolute;
+  inset: 12px;
+  background: linear-gradient(
+    135deg,
+    rgba(232, 225, 214, 0.6) 0%,
+    rgba(212, 203, 192, 0.3) 50%,
+    rgba(232, 225, 214, 0.5) 100%
+  );
+  backdrop-filter: blur(2px);
+}
+
+.window-hero__shutter--left .window-hero__shutter-glass::after {
+  content: '';
+  position: absolute;
+  top: 10%;
+  right: 15%;
+  width: 30%;
+  height: 60%;
+  background: linear-gradient(
+  105deg,
+  transparent 40%,
+  rgba(255, 255, 255, 0.15) 45%,
+  rgba(255, 255, 255, 0.25) 50%,
+  rgba(255, 255, 255, 0.15) 55%,
+  transparent 60%
+  );
+}
+
+.window-hero__shutter--right .window-hero__shutter-glass::after {
+  content: '';
+  position: absolute;
+  top: 20%;
+  left: 10%;
+  width: 25%;
+  height: 50%;
+  background: linear-gradient(
+  75deg,
+  transparent 40%,
+  rgba(255, 255, 255, 0.1) 50%,
+  transparent 60%
+  );
+}
+
+/* Center line */
+.window-hero__center-line {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 3px;
+  background: var(--cream-400);
+  z-index: 45;
+  transform-origin: center;
+}
+
+/* Content revealed */
+.window-hero__content {
+  position: absolute;
+  inset: 0;
+  z-index: 10;
+}
+
+.window-hero__bg {
+  position: absolute;
+  inset: 0;
+}
+
+.window-hero__bg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.window-hero__overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(30, 28, 26, 0.3) 0%,
+    rgba(30, 28, 26, 0.5) 50%,
+    rgba(30, 28, 26, 0.7) 100%
+  );
+}
+
+.window-hero__text {
+  position: relative;
+  z-index: 2;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-bottom: 5rem;
+}
+
+.window-hero__text .section-label {
+  color: var(--cream-300);
+}
+
+.window-hero__title {
+  font-size: clamp(3.5rem, 9vw, 7rem);
+  color: var(--cream-50);
+  margin-top: 1.5rem;
+  line-height: 1.05;
+}
+
+.window-hero__title em {
+  font-style: italic;
+  font-weight: 300;
+  color: var(--cream-200);
+}
+
+.window-hero__subtitle {
+  font-size: clamp(1rem, 2vw, 1.15rem);
+  color: var(--cream-300);
+  max-width: 480px;
+  margin-top: 2rem;
+  line-height: 1.8;
+}
+
+.window-hero__actions {
+  display: flex;
+  gap: 1rem;
+  margin-top: 3rem;
+  flex-wrap: wrap;
+}
+
+.window-hero__actions .btn-outline {
+  border-color: rgba(250, 248, 244, 0.4);
+  color: var(--cream-50);
+}
+
+.window-hero__actions .btn-outline:hover {
+  background: rgba(250, 248, 244, 0.1);
+  border-color: var(--cream-50);
+}
+
+/* Scroll indicator */
+.window-hero__scroll {
+  position: absolute;
+  bottom: 2.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  z-index: 2;
+}
+
+.window-hero__scroll span {
+  font-size: 0.6rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--cream-400);
+}
+
+.window-hero__scroll-line {
+  width: 1px;
+  height: 40px;
+  background: var(--cream-400);
+  transform-origin: top;
+}
+
+/* Outer frame */
+.window-hero__frame {
+  position: absolute;
+  inset: 20px;
+  border: 1px solid rgba(212, 203, 192, 0.3);
+  z-index: 46;
+  pointer-events: none;
+}
+
+@media (max-width: 768px) {
+  .window-hero__frame {
+    inset: 10px;
+  }
+
+  .window-hero__actions {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
