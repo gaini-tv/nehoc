@@ -1,0 +1,701 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <title>NEHOC — Charte Graphique</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Outfit:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    @page { size: A4; margin: 0; }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --cream-50: #faf8f4;
+      --cream-100: #f3eee6;
+      --cream-200: #e8e1d6;
+      --cream-300: #d4cbc0;
+      --cream-400: #b8aea3;
+      --cream-500: #9a948c;
+      --cream-600: #6b6560;
+      --cream-700: #4a4740;
+      --cream-800: #3d3a36;
+      --cream-900: #1e1c1a;
+    }
+
+    body {
+      font-family: 'Outfit', sans-serif;
+      font-weight: 300;
+      color: var(--cream-800);
+      background: var(--cream-50);
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+
+    .page {
+      width: 210mm;
+      min-height: 297mm;
+      padding: 18mm 20mm;
+      page-break-after: always;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .page:last-child { page-break-after: auto; }
+
+    /* ── COVER ── */
+    .cover {
+      background: var(--cream-900);
+      color: var(--cream-50);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 24mm 22mm;
+    }
+
+    .cover__top {
+      font-size: 9pt;
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      color: var(--cream-400);
+    }
+
+    .cover__logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 52pt;
+      font-weight: 500;
+      letter-spacing: 0.4em;
+      padding-left: 0.15em;
+      margin-top: 60mm;
+    }
+
+    .cover__title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 22pt;
+      font-weight: 300;
+      font-style: italic;
+      color: var(--cream-300);
+      margin-top: 8mm;
+    }
+
+    .cover__bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      border-top: 1px solid rgba(250,248,244,0.15);
+      padding-top: 8mm;
+      font-size: 8pt;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--cream-500);
+    }
+
+    .cover__frame {
+      position: absolute;
+      inset: 12mm;
+      border: 1px solid rgba(212,203,192,0.2);
+      pointer-events: none;
+    }
+
+    /* ── SECTION HEADERS ── */
+    .section-num {
+      font-size: 8pt;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--cream-500);
+      margin-bottom: 3mm;
+    }
+
+    .section-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 28pt;
+      font-weight: 400;
+      color: var(--cream-900);
+      line-height: 1.1;
+      margin-bottom: 4mm;
+    }
+
+    .section-sub {
+      font-size: 9.5pt;
+      color: var(--cream-600);
+      line-height: 1.7;
+      max-width: 140mm;
+      margin-bottom: 10mm;
+    }
+
+    .divider {
+      width: 18mm;
+      height: 0.5pt;
+      background: var(--cream-400);
+      margin: 6mm 0 10mm;
+    }
+
+    .page-footer {
+      position: absolute;
+      bottom: 14mm;
+      left: 20mm;
+      right: 20mm;
+      display: flex;
+      justify-content: space-between;
+      font-size: 7pt;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--cream-500);
+      border-top: 0.5pt solid var(--cream-200);
+      padding-top: 4mm;
+    }
+
+    /* ── LOGO ── */
+    .logo-showcase {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5mm;
+      margin-bottom: 8mm;
+    }
+
+    .logo-box {
+      padding: 14mm 10mm;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 0.5pt solid var(--cream-200);
+    }
+
+    .logo-box--dark { background: var(--cream-900); }
+    .logo-box--light { background: var(--cream-50); }
+
+    .logo-text {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 28pt;
+      font-weight: 500;
+      letter-spacing: 0.38em;
+      padding-left: 0.12em;
+    }
+
+    .logo-text--light { color: var(--cream-50); }
+    .logo-text--dark { color: var(--cream-900); }
+
+    .logo-rules {
+      font-size: 8.5pt;
+      color: var(--cream-600);
+      line-height: 1.8;
+    }
+
+    .logo-rules li { margin-bottom: 2mm; list-style: none; padding-left: 5mm; position: relative; }
+    .logo-rules li::before { content: '—'; position: absolute; left: 0; color: var(--cream-400); }
+
+    /* ── COLORS ── */
+    .palette {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 3mm;
+      margin-bottom: 8mm;
+    }
+
+    .swatch {
+      border-radius: 1mm;
+      overflow: hidden;
+      border: 0.5pt solid var(--cream-200);
+    }
+
+    .swatch__color { height: 22mm; }
+    .swatch__info {
+      padding: 2.5mm 3mm;
+      background: white;
+      font-size: 6.5pt;
+      line-height: 1.5;
+    }
+
+    .swatch__name { font-weight: 500; color: var(--cream-900); font-size: 7pt; }
+    .swatch__hex { color: var(--cream-500); font-family: monospace; letter-spacing: 0.05em; }
+
+    .color-usage {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5mm;
+    }
+
+    .usage-card {
+      padding: 6mm;
+      border: 0.5pt solid var(--cream-200);
+      font-size: 8pt;
+      line-height: 1.7;
+      color: var(--cream-600);
+    }
+
+    .usage-card h4 {
+      font-family: 'Outfit', sans-serif;
+      font-size: 7pt;
+      font-weight: 500;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--cream-500);
+      margin-bottom: 3mm;
+    }
+
+    /* ── TYPOGRAPHY ── */
+    .type-specimen { margin-bottom: 10mm; }
+
+    .type-row {
+      display: grid;
+      grid-template-columns: 32mm 1fr;
+      gap: 6mm;
+      align-items: baseline;
+      padding: 5mm 0;
+      border-bottom: 0.5pt solid var(--cream-200);
+    }
+
+    .type-meta {
+      font-size: 7pt;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--cream-500);
+      line-height: 1.6;
+    }
+
+    .type-display-hero {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 36pt;
+      font-weight: 400;
+      color: var(--cream-900);
+      line-height: 1.05;
+    }
+
+    .type-display-hero em { font-style: italic; font-weight: 300; color: var(--cream-600); }
+
+    .type-h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 22pt;
+      color: var(--cream-900);
+    }
+
+    .type-body {
+      font-family: 'Outfit', sans-serif;
+      font-size: 10pt;
+      font-weight: 300;
+      color: var(--cream-700);
+      line-height: 1.8;
+    }
+
+    .type-label {
+      font-family: 'Outfit', sans-serif;
+      font-size: 7pt;
+      font-weight: 500;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--cream-500);
+    }
+
+    .type-btn {
+      display: inline-block;
+      padding: 3mm 7mm;
+      font-size: 7pt;
+      font-weight: 500;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      background: var(--cream-900);
+      color: var(--cream-50);
+    }
+
+    .alphabet {
+      font-size: 8pt;
+      color: var(--cream-600);
+      line-height: 2;
+      margin-top: 6mm;
+      padding: 5mm;
+      background: var(--cream-100);
+      border: 0.5pt solid var(--cream-200);
+    }
+
+    .alphabet span { font-weight: 500; color: var(--cream-800); }
+
+    /* ── COMPONENTS ── */
+    .components-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5mm;
+      margin-bottom: 8mm;
+    }
+
+    .comp-card {
+      border: 0.5pt solid var(--cream-200);
+      overflow: hidden;
+    }
+
+    .comp-card__preview {
+      padding: 8mm;
+      background: var(--cream-100);
+      min-height: 28mm;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 4mm;
+    }
+
+    .comp-card__label {
+      padding: 3mm 5mm;
+      font-size: 7pt;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--cream-500);
+      border-top: 0.5pt solid var(--cream-200);
+    }
+
+    .btn-outline {
+      display: inline-block;
+      padding: 3mm 7mm;
+      font-size: 7pt;
+      font-weight: 500;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      border: 0.5pt solid var(--cream-400);
+      color: var(--cream-800);
+      background: transparent;
+    }
+
+    /* ── VALUES ── */
+    .values-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 4mm;
+    }
+
+    .value-item {
+      padding: 6mm;
+      background: var(--cream-100);
+      border: 0.5pt solid var(--cream-200);
+    }
+
+    .value-item h4 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 14pt;
+      color: var(--cream-900);
+      margin-bottom: 2mm;
+    }
+
+    .value-item p {
+      font-size: 8pt;
+      color: var(--cream-600);
+      line-height: 1.7;
+    }
+
+    .tone-bar {
+      display: flex;
+      height: 6mm;
+      border-radius: 1mm;
+      overflow: hidden;
+      margin: 8mm 0;
+      border: 0.5pt solid var(--cream-200);
+    }
+
+    .tone-bar div { flex: 1; }
+
+    .do-dont {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5mm;
+      margin-top: 6mm;
+    }
+
+    .do-dont__col h4 {
+      font-size: 7pt;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      margin-bottom: 3mm;
+    }
+
+    .do-dont__col--do h4 { color: var(--cream-700); }
+    .do-dont__col--dont h4 { color: #9a6b6b; }
+
+    .do-dont__col ul {
+      font-size: 8pt;
+      color: var(--cream-600);
+      line-height: 1.8;
+      list-style: none;
+    }
+
+    .do-dont__col li::before { margin-right: 2mm; }
+    .do-dont__col--do li::before { content: '✓'; color: var(--cream-600); }
+    .do-dont__col--dont li::before { content: '✕'; color: #9a6b6b; }
+  </style>
+</head>
+<body>
+
+  <!-- PAGE 1 — COVER -->
+  <div class="page cover">
+    <div class="cover__frame"></div>
+    <div class="cover__top">Identité visuelle</div>
+    <div>
+      <div class="cover__logo">NEHOC</div>
+      <div class="cover__title">Charte graphique</div>
+    </div>
+    <div class="cover__bottom">
+      <span>Menuiseries aluminium &amp; PVC</span>
+      <span>Édition 2026</span>
+    </div>
+  </div>
+
+  <!-- PAGE 2 — LOGO -->
+  <div class="page">
+    <div class="section-num">01 — Logo</div>
+    <h2 class="section-title">Signature</h2>
+    <p class="section-sub">Le logotype NEHOC s'écrit en Cormorant Garamond avec un espacement généreux entre les lettres. Il incarne l'élégance, la précision artisanale et le luxe discret.</p>
+    <div class="divider"></div>
+
+    <div class="logo-showcase">
+      <div class="logo-box logo-box--dark">
+        <span class="logo-text logo-text--light">NEHOC</span>
+      </div>
+      <div class="logo-box logo-box--light">
+        <span class="logo-text logo-text--dark">NEHOC</span>
+      </div>
+    </div>
+
+    <ul class="logo-rules">
+      <li>Letter-spacing : 0,35 à 0,4 em</li>
+      <li>Taille minimale : 24 px (web) / 8 mm (print)</li>
+      <li>Zone de protection : hauteur du « N » autour du logo</li>
+      <li>Versions autorisées : fond clair (#FAF8F4) ou fond sombre (#1E1C1A)</li>
+      <li>Ne pas déformer, pivoter, ajouter d'effets ou utiliser d'autres polices</li>
+    </ul>
+
+    <div class="page-footer">
+      <span>NEHOC — Charte graphique</span>
+      <span>02</span>
+    </div>
+  </div>
+
+  <!-- PAGE 3 — COLORS -->
+  <div class="page">
+    <div class="section-num">02 — Couleurs</div>
+    <h2 class="section-title">Palette crème luxe</h2>
+    <p class="section-sub">Une gamme de tons crème et taupe, sans doré. Chaleureuse, raffinée et intemporelle — comme la lumière qui traverse une baie vitrée.</p>
+    <div class="divider"></div>
+
+    <div class="tone-bar">
+      <div style="background:#faf8f4"></div>
+      <div style="background:#f3eee6"></div>
+      <div style="background:#e8e1d6"></div>
+      <div style="background:#d4cbc0"></div>
+      <div style="background:#b8aea3"></div>
+      <div style="background:#9a948c"></div>
+      <div style="background:#6b6560"></div>
+      <div style="background:#4a4740"></div>
+      <div style="background:#3d3a36"></div>
+      <div style="background:#1e1c1a"></div>
+    </div>
+
+    <div class="palette">
+      <div class="swatch"><div class="swatch__color" style="background:#faf8f4"></div><div class="swatch__info"><div class="swatch__name">Cream 50</div><div class="swatch__hex">#FAF8F4</div></div></div>
+      <div class="swatch"><div class="swatch__color" style="background:#f3eee6"></div><div class="swatch__info"><div class="swatch__name">Cream 100</div><div class="swatch__hex">#F3EEE6</div></div></div>
+      <div class="swatch"><div class="swatch__color" style="background:#e8e1d6"></div><div class="swatch__info"><div class="swatch__name">Cream 200</div><div class="swatch__hex">#E8E1D6</div></div></div>
+      <div class="swatch"><div class="swatch__color" style="background:#d4cbc0"></div><div class="swatch__info"><div class="swatch__name">Cream 300</div><div class="swatch__hex">#D4CBC0</div></div></div>
+      <div class="swatch"><div class="swatch__color" style="background:#b8aea3"></div><div class="swatch__info"><div class="swatch__name">Cream 400</div><div class="swatch__hex">#B8AEA3</div></div></div>
+      <div class="swatch"><div class="swatch__color" style="background:#9a948c"></div><div class="swatch__info"><div class="swatch__name">Cream 500</div><div class="swatch__hex">#9A948C</div></div></div>
+      <div class="swatch"><div class="swatch__color" style="background:#6b6560"></div><div class="swatch__info"><div class="swatch__name">Cream 600</div><div class="swatch__hex">#6B6560</div></div></div>
+      <div class="swatch"><div class="swatch__color" style="background:#4a4740"></div><div class="swatch__info"><div class="swatch__name">Cream 700</div><div class="swatch__hex">#4A4740</div></div></div>
+      <div class="swatch"><div class="swatch__color" style="background:#3d3a36"></div><div class="swatch__info"><div class="swatch__name">Cream 800</div><div class="swatch__hex">#3D3A36</div></div></div>
+      <div class="swatch"><div class="swatch__color" style="background:#1e1c1a"></div><div class="swatch__info"><div class="swatch__name">Cream 900</div><div class="swatch__hex">#1E1C1A</div></div></div>
+    </div>
+
+    <div class="color-usage">
+      <div class="usage-card">
+        <h4>Fonds</h4>
+        Cream 50 (#FAF8F4) pour le fond principal.<br>
+        Cream 100 (#F3EEE6) pour les sections alternées.<br>
+        Cream 900 (#1E1C1A) pour les zones hero et CTA.
+      </div>
+      <div class="usage-card">
+        <h4>Textes</h4>
+        Cream 900 / 800 pour les titres.<br>
+        Cream 600 / 700 pour le corps de texte.<br>
+        Cream 50 pour le texte sur fond sombre.
+      </div>
+      <div class="usage-card">
+        <h4>Bordures &amp; séparateurs</h4>
+        Cream 200 et 300 pour les lignes fines.<br>
+        Cream 400 pour les bordures de boutons outline.
+      </div>
+      <div class="usage-card">
+        <h4>Interdit</h4>
+        Pas de doré, jaune or ou cuivré.<br>
+        Pas de couleurs vives (rouge, bleu électrique).<br>
+        Rester dans la palette crème / taupe.
+      </div>
+    </div>
+
+    <div class="page-footer">
+      <span>NEHOC — Charte graphique</span>
+      <span>03</span>
+    </div>
+  </div>
+
+  <!-- PAGE 4 — TYPOGRAPHY -->
+  <div class="page">
+    <div class="section-num">03 — Typographie</div>
+    <h2 class="section-title">Deux voix, une harmonie</h2>
+    <p class="section-sub">Cormorant Garamond pour l'élégance des titres. Outfit pour la clarté du texte courant. Un contraste serif / sans-serif qui reflète le mariage du verre et de l'aluminium.</p>
+    <div class="divider"></div>
+
+    <div class="type-specimen">
+      <div class="type-row">
+        <div class="type-meta">Display<br>Cormorant Garamond<br>400 / Italic 300</div>
+        <div class="type-display-hero">Se sentir bien<br><em>dans la lumière</em></div>
+      </div>
+      <div class="type-row">
+        <div class="type-meta">Titre H2<br>Cormorant Garamond<br>400 — 2,5 à 4,5 rem</div>
+        <div class="type-h2">Nos expertises</div>
+      </div>
+      <div class="type-row">
+        <div class="type-meta">Corps<br>Outfit<br>300 — 16 px</div>
+        <div class="type-body">NEHOC, c'est une nouvelle façon de voir les menuiseries. Des matériaux de qualité, un conseil fondé sur le retour d'expérience, et une obsession : la luminosité des espaces où l'on se sent bien.</div>
+      </div>
+      <div class="type-row">
+        <div class="type-meta">Label<br>Outfit Medium<br>500 — 0,7 rem</div>
+        <div class="type-label">Menuiseries aluminium &amp; PVC</div>
+      </div>
+      <div class="type-row" style="border:none">
+        <div class="type-meta">Bouton<br>Outfit Medium<br>500 — uppercase</div>
+        <div><span class="type-btn">Demander un devis</span></div>
+      </div>
+    </div>
+
+    <div class="alphabet">
+      <span>Cormorant Garamond :</span> Aa Bb Cc Dd Ee Ff Gg Hh Ii Jj Kk Ll Mm Nn Oo Pp Qq Rr Ss Tt Uu Vv Ww Xx Yy Zz<br>
+      <span>Outfit :</span> Aa Bb Cc Dd Ee Ff Gg Hh Ii Jj Kk Ll Mm Nn Oo Pp Qq Rr Ss Tt Uu Vv Ww Xx Yy Zz 0123456789
+    </div>
+
+    <div class="page-footer">
+      <span>NEHOC — Charte graphique</span>
+      <span>04</span>
+    </div>
+  </div>
+
+  <!-- PAGE 5 — COMPONENTS & TONE -->
+  <div class="page">
+    <div class="section-num">04 — Composants</div>
+    <h2 class="section-title">Éléments d'interface</h2>
+    <p class="section-sub">Boutons épurés, labels en capitales espacées, cartes sans coins arrondis excessifs. L'interface respire — comme un espace baigné de lumière.</p>
+    <div class="divider"></div>
+
+    <div class="components-grid">
+      <div class="comp-card">
+        <div class="comp-card__preview">
+          <span class="type-btn">Bouton primaire</span>
+        </div>
+        <div class="comp-card__label">Fond Cream 900 · Texte Cream 50</div>
+      </div>
+      <div class="comp-card">
+        <div class="comp-card__preview">
+          <span class="btn-outline">Bouton outline</span>
+        </div>
+        <div class="comp-card__label">Bordure Cream 400 · Fond transparent</div>
+      </div>
+      <div class="comp-card">
+        <div class="comp-card__preview">
+          <span class="type-label">Section label</span>
+        </div>
+        <div class="comp-card__label">Outfit 500 · Letter-spacing 0,25 em · Uppercase</div>
+      </div>
+      <div class="comp-card">
+        <div class="comp-card__preview" style="background:var(--cream-900)">
+          <span class="logo-text logo-text--light" style="font-size:18pt">NEHOC</span>
+        </div>
+        <div class="comp-card__label">Navigation hero — texte blanc crème</div>
+      </div>
+    </div>
+
+    <div class="section-num" style="margin-top:8mm">05 — Ton &amp; valeurs</div>
+    <h2 class="section-title" style="font-size:20pt;margin-bottom:6mm">Esprit de marque</h2>
+
+    <div class="values-grid">
+      <div class="value-item">
+        <h4>Épuré</h4>
+        <p>Beaucoup d'espace blanc. Pas de surcharge visuelle. Chaque élément a sa place.</p>
+      </div>
+      <div class="value-item">
+        <h4>Luxueux</h4>
+        <p>Tons crème, typographie serif, animations fluides. Le luxe par la retenue.</p>
+      </div>
+      <div class="value-item">
+        <h4>Lumineux</h4>
+        <p>La lumière est au cœur de tout. Images extérieures, vitrages, transparence.</p>
+      </div>
+    </div>
+
+    <div class="do-dont">
+      <div class="do-dont__col do-dont__col--do">
+        <h4>À faire</h4>
+        <ul>
+          <li>Utiliser des photos extérieures et vitrées</li>
+          <li>Privilégier les tons crème et taupe</li>
+          <li>Animations douces, type ouverture de fenêtre</li>
+          <li>Textes courts, élégants, en français</li>
+        </ul>
+      </div>
+      <div class="do-dont__col do-dont__col--dont">
+        <h4>À éviter</h4>
+        <ul>
+          <li>Couleurs dorées ou trop vives</li>
+          <li>Photos de salons / intérieurs génériques</li>
+          <li>Polices fantaisie ou Comic Sans</li>
+          <li>Coins très arrondis, style « startup »</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="page-footer">
+      <span>NEHOC — Charte graphique</span>
+      <span>05</span>
+    </div>
+  </div>
+
+  <!-- PAGE 6 — CONTACT & CREDITS -->
+  <div class="page" style="display:flex;flex-direction:column;justify-content:space-between">
+    <div>
+      <div class="section-num">06 — Contact</div>
+      <h2 class="section-title">Informations</h2>
+      <div class="divider"></div>
+
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:8mm;font-size:9pt;line-height:2.2;color:var(--cream-700)">
+        <div>
+          <div style="font-size:7pt;letter-spacing:0.2em;text-transform:uppercase;color:var(--cream-500);margin-bottom:3mm">Marque</div>
+          <strong style="color:var(--cream-900);font-weight:500">NEHOC</strong><br>
+          Menuiseries aluminium &amp; PVC<br>
+          Marseille 13006
+        </div>
+        <div>
+          <div style="font-size:7pt;letter-spacing:0.2em;text-transform:uppercase;color:var(--cream-500);margin-bottom:3mm">Ressources</div>
+          contact@nehoc.fr<br>
+          www.nehoc.fr<br>
+          GitHub : gaini-tv/nehoc
+        </div>
+        <div>
+          <div style="font-size:7pt;letter-spacing:0.2em;text-transform:uppercase;color:var(--cream-500);margin-bottom:3mm">Polices (Google Fonts)</div>
+          Cormorant Garamond<br>
+          Outfit
+        </div>
+        <div>
+          <div style="font-size:7pt;letter-spacing:0.2em;text-transform:uppercase;color:var(--cream-500);margin-bottom:3mm">Animation</div>
+          Courbe luxury : cubic-bezier(0.22, 1, 0.36, 1)<br>
+          Courbe fenêtre : cubic-bezier(0.76, 0, 0.24, 1)
+        </div>
+      </div>
+    </div>
+
+    <div style="text-align:center;padding:20mm 0">
+      <div class="logo-text logo-text--dark" style="font-size:36pt;margin-bottom:6mm">NEHOC</div>
+      <div style="font-family:'Cormorant Garamond',serif;font-size:14pt;font-style:italic;font-weight:300;color:var(--cream-600)">
+        Une nouvelle façon de voir les menuiseries
+      </div>
+    </div>
+
+    <div class="page-footer">
+      <span>© 2026 NEHOC — Tous droits réservés</span>
+      <span>06</span>
+    </div>
+  </div>
+
+</body>
+</html>

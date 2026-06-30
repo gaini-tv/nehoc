@@ -1,0 +1,28 @@
+.logo {
+  display: block;
+  width: auto;
+  object-fit: contain;
+}
+
+.logo--nav {
+  height: 64px;
+}
+
+.logo--footer {
+  height: 76px;
+  margin-bottom: 1.5rem;
+}
+
+.logo--hero-intro {
+  height: clamp(120px, 18vw, 190px);
+}
+
+@media (max-width: 768px) {
+  .logo--nav {
+    height: 50px;
+  }
+
+  .logo--footer {
+    height: 64px;
+  }
+}

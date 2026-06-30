@@ -124,7 +124,7 @@ input, textarea, select {
   font-weight: 500;
   letter-spacing: 0.25em;
   text-transform: uppercase;
-  color: var(--cream-500);
+  color: var(--cream-600);
 }
 
 .section-title {
@@ -181,4 +181,48 @@ input, textarea, select {
   height: 1px;
   background: var(--cream-400);
   margin: 2rem 0;
+}
+
+/* Accessibilité — focus visible */
+:focus {
+  outline: none;
+}
+
+:focus-visible {
+  outline: 2px solid var(--cream-800);
+  outline-offset: 3px;
+}
+
+.btn:focus-visible {
+  outline-color: var(--cream-50);
+  box-shadow: 0 0 0 3px var(--cream-900), 0 0 0 6px var(--cream-400);
+}
+
+/* Texte masqué visuellement, lu par les lecteurs d'écran */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Réduction des animations */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .lenis.lenis-smooth {
+    scroll-behavior: auto !important;
+  }
 }

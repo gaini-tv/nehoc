@@ -1,4 +1,5 @@
 import { useState, type FormEvent } from 'react';
+import { Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import SEO from '../components/SEO';
 import WindowTextReveal from '../components/WindowTextReveal';
@@ -9,6 +10,7 @@ import './Contact.css';
 
 export default function Contact() {
   const [submitted, setSubmitted] = useState(false);
+  const [consent, setConsent] = useState(false);
   const [form, setForm] = useState({
     name: '',
     email: '',
@@ -19,6 +21,7 @@ export default function Contact() {
 
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
+    if (!consent) return;
     setSubmitted(true);
   };
 
@@ -34,7 +37,7 @@ export default function Contact() {
   return (
     <div className="contact">
       <SEO seo={pagesSeo.contact} jsonLd={contactSchema} />
-      <section className="contact-hero">
+      <section className="contact-hero" aria-labelledby="contact-title">
         <div className="container">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -43,9 +46,11 @@ export default function Contact() {
           >
             <span className="section-label">Contact</span>
             <WindowTextReveal className="contact-hero__title" as="h1" delay={0.2}>
-              Parlons de
-              <br />
-              <em>votre projet</em>
+              <span id="contact-title">
+                Parlons de
+                <br />
+                <em>votre projet</em>
+              </span>
             </WindowTextReveal>
             <p className="section-subtitle">
               Notre équipe vous répond sous 48h pour une première
@@ -55,23 +60,28 @@ export default function Contact() {
         </div>
       </section>
 
-      <section className="contact-main">
+      <section className="contact-main" aria-label="Formulaire de contact">
         <div className="container">
           <div className="contact-main__grid">
             <ScrollReveal direction="left">
               <div className="contact-info">
                 <div className="contact-info__block">
-                  <h3>Coordonnées</h3>
-                  <p>{business.email}</p>
+                  <h2 className="contact-info__heading">Coordonnées</h2>
+                  <p>
+                    <a href={`mailto:${business.email}`}>{business.email}</a>
+                  </p>
+                  <p>
+                    <a href={`tel:${business.phone}`}>{business.phoneDisplay}</a>
+                  </p>
                 </div>
 
                 <div className="contact-info__block">
-                  <h3>Adresse</h3>
-                  <p>Marseille, 13006</p>
+                  <h2 className="contact-info__heading">Adresse</h2>
+                  <p>{business.address.display}</p>
                 </div>
 
                 <div className="contact-info__block">
-                  <h3>Horaires</h3>
+                  <h2 className="contact-info__heading">Horaires</h2>
                   <p>Lundi — Vendredi : 8h — 18h</p>
                   <p>Samedi : 9h — 12h</p>
                 </div>
@@ -79,7 +89,7 @@ export default function Contact() {
                 <div className="contact-info__image">
                   <img
                     src={images.architecture}
-                    alt="Architecture vitrée extérieure"
+                    alt="Façade vitrée extérieure — réalisation menuiserie"
                     loading="lazy"
                   />
                 </div>
@@ -98,25 +108,30 @@ export default function Contact() {
                       animate={{ opacity: 1 }}
                       exit={{ opacity: 0, y: -20 }}
                       transition={{ duration: 0.5 }}
+                      noValidate
                     >
                       <div className="form-row">
                         <div className="form-group">
-                          <label htmlFor="name">Nom complet</label>
+                          <label htmlFor="name">Nom complet <span aria-hidden="true">*</span></label>
                           <input
                             id="name"
+                            name="name"
                             type="text"
                             required
+                            autoComplete="name"
                             value={form.name}
                             onChange={(e) => setForm({ ...form, name: e.target.value })}
                             placeholder="Jean Dupont"
                           />
                         </div>
                         <div className="form-group">
-                          <label htmlFor="email">Email</label>
+                          <label htmlFor="email">Email <span aria-hidden="true">*</span></label>
                           <input
                             id="email"
+                            name="email"
                             type="email"
                             required
+                            autoComplete="email"
                             value={form.email}
                             onChange={(e) => setForm({ ...form, email: e.target.value })}
                             placeholder="jean@exemple.fr"
@@ -129,7 +144,9 @@ export default function Contact() {
                           <label htmlFor="phone">Téléphone</label>
                           <input
                             id="phone"
+                            name="phone"
                             type="tel"
+                            autoComplete="tel"
                             value={form.phone}
                             onChange={(e) => setForm({ ...form, phone: e.target.value })}
                             placeholder="06 00 00 00 00"
@@ -139,6 +156,7 @@ export default function Contact() {
                           <label htmlFor="project">Type de projet</label>
                           <select
                             id="project"
+                            name="project"
                             value={form.project}
                             onChange={(e) => setForm({ ...form, project: e.target.value })}
                           >
@@ -153,15 +171,36 @@ export default function Contact() {
                       </div>
 
                       <div className="form-group">
-                        <label htmlFor="message">Votre message</label>
+                        <label htmlFor="message">Votre message <span aria-hidden="true">*</span></label>
                         <textarea
                           id="message"
+                          name="message"
                           required
                           rows={5}
                           value={form.message}
                           onChange={(e) => setForm({ ...form, message: e.target.value })}
                           placeholder="Décrivez votre projet, vos envies, votre espace..."
                         />
+                      </div>
+
+                      <div className="form-group form-group--consent">
+                        <label className="consent-label">
+                          <input
+                            type="checkbox"
+                            name="consent"
+                            required
+                            checked={consent}
+                            onChange={(e) => setConsent(e.target.checked)}
+                          />
+                          <span>
+                            J'accepte que mes données personnelles soient traitées
+                            par NEHOC pour répondre à ma demande, conformément à la{' '}
+                            <Link to="/politique-de-confidentialite">
+                              politique de confidentialité
+                            </Link>.
+                            <span className="sr-only"> (obligatoire)</span>
+                          </span>
+                        </label>
                       </div>
 
                       <button type="submit" className="btn btn-primary contact-form__submit">
@@ -172,11 +211,14 @@ export default function Contact() {
                     <motion.div
                       key="success"
                       className="contact-success"
+                      role="status"
+                      aria-live="polite"
+                      aria-atomic="true"
                       initial={{ opacity: 0, scale: 0.95 }}
                       animate={{ opacity: 1, scale: 1 }}
                       transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
                     >
-                      <div className="contact-success__icon">
+                      <div className="contact-success__icon" aria-hidden="true">
                         <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
                           <circle cx="24" cy="24" r="23" stroke="currentColor" strokeWidth="1" />
                           <path d="M14 24l7 7 13-14" stroke="currentColor" strokeWidth="1.5" />

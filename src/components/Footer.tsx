@@ -1,31 +1,37 @@
 import { Link } from 'react-router-dom';
 import { business } from '../config/site';
+import { useCookieConsent } from '../context/CookieConsentContext';
+import Logo from './Logo';
+import './Logo.css';
 import './Footer.css';
 
 export default function Footer() {
+  const { openSettings } = useCookieConsent();
+
   return (
-    <footer className="footer" itemScope itemType="https://schema.org/HomeAndConstructionBusiness">
-      <meta itemProp="name" content={business.name} />
+    <footer className="footer">
       <div className="container">
         <div className="footer__grid">
           <div className="footer__brand">
-            <span className="footer__logo">NEHOC</span>
+            <Link to="/" aria-label="NEHOC — Retour à l'accueil">
+              <Logo variant="black" className="logo--footer" />
+            </Link>
             <p className="footer__tagline">
               Une nouvelle façon de voir les menuiseries.
               Qualité, conseil et luminosité pour chaque espace.
             </p>
           </div>
 
-          <div className="footer__col">
-            <h4>Navigation</h4>
+          <nav className="footer__col" aria-label="Navigation principale">
+            <p className="footer__col-title">Navigation</p>
             <Link to="/">Accueil</Link>
             <Link to="/a-propos">À propos</Link>
             <Link to="/catalogue">Catalogue</Link>
             <Link to="/contact">Contact</Link>
-          </div>
+          </nav>
 
           <div className="footer__col">
-            <h4>Expertises</h4>
+            <p className="footer__col-title">Expertises</p>
             <span>Fenêtres aluminium</span>
             <span>Fenêtres PVC</span>
             <span>Serrurerie & Métallerie</span>
@@ -34,15 +40,23 @@ export default function Footer() {
           </div>
 
           <div className="footer__col">
-            <h4>Contact</h4>
-            <a href={`mailto:${business.email}`} itemProp="email">{business.email}</a>
-            <span itemProp="areaServed">Marseille &amp; PACA</span>
+            <p className="footer__col-title">Contact</p>
+            <a href={`mailto:${business.email}`}>{business.email}</a>
+            <a href={`tel:${business.phone}`}>{business.phoneDisplay}</a>
+            <span>{business.address.display}</span>
           </div>
         </div>
 
+        <nav className="footer__legal" aria-label="Informations légales">
+          <Link to="/mentions-legales">Mentions légales</Link>
+          <Link to="/politique-de-confidentialite">Politique de confidentialité</Link>
+          <button type="button" className="footer__legal-btn" onClick={openSettings}>
+            Gérer les cookies
+          </button>
+        </nav>
+
         <div className="footer__bottom">
           <span>&copy; {new Date().getFullYear()} NEHOC. Tous droits réservés.</span>
-          <span className="footer__crafted">Façonné avec précision</span>
         </div>
       </div>
     </footer>

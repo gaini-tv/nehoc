@@ -41,8 +41,8 @@ const services = [
 const stats = [
   { value: '4', label: 'Frères fondateurs' },
   { value: '100%', label: 'Sur mesure' },
-  { value: '∞', label: 'Coloris & finitions' },
-  { value: '★', label: 'Prix compétitifs' },
+  { value: '∞', label: 'Coloris & finitions', ariaLabel: 'Infini — Coloris et finitions' },
+  { value: '★', label: 'Prix compétitifs', ariaLabel: 'Prix compétitifs' },
 ];
 
 export default function Home() {
@@ -74,9 +74,8 @@ export default function Home() {
             <ScrollReveal delay={0.2} direction="left">
               <p className="home-philosophy__text">
                 NEHOC, c'est une nouvelle façon de voir les menuiseries.
-                Quatre frères, issus d'une famille de promoteurs immobiliers,
-                ont uni leurs expertises pour créer ce qu'ils n'avaient jamais
-                trouvé sur le marché.
+                Quatre frères ont uni leurs expertises pour créer ce qu'ils
+                n'avaient jamais trouvé sur le marché.
               </p>
               <div className="divider" />
               <p className="home-philosophy__text">
@@ -118,8 +117,8 @@ export default function Home() {
                     <h3>{service.title}</h3>
                     <p>{service.description}</p>
                     <Link to="/catalogue" className="service-card__link">
-                      Explorer
-                      <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                      Explorer le catalogue
+                      <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
                         <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.5" />
                       </svg>
                     </Link>
@@ -173,7 +172,7 @@ export default function Home() {
             {stats.map((stat) => (
               <StaggerItem key={stat.label}>
                 <div className="stat-item">
-                  <span className="stat-item__value">{stat.value}</span>
+                  <span className="stat-item__value" aria-label={stat.ariaLabel}>{stat.value}</span>
                   <span className="stat-item__label">{stat.label}</span>
                 </div>
               </StaggerItem>

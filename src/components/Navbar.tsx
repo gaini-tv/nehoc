@@ -1,6 +1,9 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef, useCallback } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
+import Logo from './Logo';
+import { useReducedMotion } from '../hooks/useReducedMotion';
+import './Logo.css';
 import './Navbar.css';
 
 const links = [
@@ -15,6 +18,9 @@ export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
   const location = useLocation();
   const isHome = location.pathname === '/';
+  const reducedMotion = useReducedMotion();
+  const menuRef = useRef<HTMLDivElement>(null);
+  const burgerRef = useRef<HTMLButtonElement>(null);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 80);
@@ -31,25 +37,48 @@ export default function Navbar() {
     return () => { document.body.style.overflow = ''; };
   }, [menuOpen]);
 
+  const closeMenu = useCallback(() => {
+    setMenuOpen(false);
+    burgerRef.current?.focus();
+  }, []);
+
+  useEffect(() => {
+    if (!menuOpen) return;
+
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') closeMenu();
+    };
+
+    document.addEventListener('keydown', handleKeyDown);
+    const firstLink = menuRef.current?.querySelector('a');
+    firstLink?.focus();
+
+    return () => document.removeEventListener('keydown', handleKeyDown);
+  }, [menuOpen, closeMenu]);
+
+  const isOnHero = isHome && !scrolled;
+  const navDelay = reducedMotion ? 0 : 2.2;
+
   return (
     <>
       <motion.header
         className={`navbar ${scrolled || !isHome ? 'navbar--scrolled' : 'navbar--on-hero'}`}
-        initial={{ y: -100, opacity: 0 }}
+        initial={reducedMotion ? false : { y: -100, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
-        transition={{ delay: 2.2, duration: 1, ease: [0.22, 1, 0.36, 1] }}
+        transition={{ delay: navDelay, duration: reducedMotion ? 0 : 1, ease: [0.22, 1, 0.36, 1] }}
       >
         <div className="navbar__inner container">
-          <Link to="/" className="navbar__logo">
-            <span className="navbar__logo-text">NEHOC</span>
+          <Link to="/" className="navbar__logo" aria-label="NEHOC — Retour à l'accueil">
+            <Logo variant={isOnHero ? 'white' : 'black'} className="logo--nav" />
           </Link>
 
-          <nav className="navbar__nav">
+          <nav className="navbar__nav" aria-label="Navigation principale">
             {links.map((link) => (
               <Link
                 key={link.to}
                 to={link.to}
                 className={`navbar__link ${location.pathname === link.to ? 'navbar__link--active' : ''}`}
+                aria-current={location.pathname === link.to ? 'page' : undefined}
               >
                 {link.label}
                 {location.pathname === link.to && (
@@ -64,9 +93,12 @@ export default function Navbar() {
           </nav>
 
           <button
+            ref={burgerRef}
             className={`navbar__burger ${menuOpen ? 'navbar__burger--open' : ''}`}
             onClick={() => setMenuOpen(!menuOpen)}
-            aria-label="Menu"
+            aria-label={menuOpen ? 'Fermer le menu' : 'Ouvrir le menu'}
+            aria-expanded={menuOpen}
+            aria-controls="mobile-menu"
           >
             <span />
             <span />
@@ -77,39 +109,29 @@ export default function Navbar() {
       <AnimatePresence>
         {menuOpen && (
           <motion.div
+            ref={menuRef}
+            id="mobile-menu"
             className="mobile-menu"
+            role="dialog"
+            aria-modal="true"
+            aria-label="Menu de navigation"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 0.4 }}
+            transition={{ duration: reducedMotion ? 0 : 0.4 }}
           >
-            <motion.nav
-              className="mobile-menu__nav"
-              initial="hidden"
-              animate="visible"
-              exit="hidden"
-              variants={{
-                hidden: {},
-                visible: { transition: { staggerChildren: 0.08, delayChildren: 0.1 } },
-              }}
-            >
+            <nav className="mobile-menu__nav" aria-label="Navigation mobile">
               {links.map((link) => (
-                <motion.div
+                <Link
                   key={link.to}
-                  variants={{
-                    hidden: { opacity: 0, y: 30 },
-                    visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] } },
-                  }}
+                  to={link.to}
+                  className={`mobile-menu__link ${location.pathname === link.to ? 'mobile-menu__link--active' : ''}`}
+                  aria-current={location.pathname === link.to ? 'page' : undefined}
                 >
-                  <Link
-                    to={link.to}
-                    className={`mobile-menu__link ${location.pathname === link.to ? 'mobile-menu__link--active' : ''}`}
-                  >
-                    {link.label}
-                  </Link>
-                </motion.div>
+                  {link.label}
+                </Link>
               ))}
-            </motion.nav>
+            </nav>
           </motion.div>
         )}
       </AnimatePresence>

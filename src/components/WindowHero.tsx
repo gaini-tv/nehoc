@@ -1,21 +1,28 @@
 import { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
 import { Link } from 'react-router-dom';
+import { motion, AnimatePresence } from 'framer-motion';
+import Logo from './Logo';
 import { images } from '../data/images';
+import { useReducedMotion } from '../hooks/useReducedMotion';
+import './Logo.css';
 import './WindowHero.css';
 
 export default function WindowHero() {
-  const [isOpen, setIsOpen] = useState(false);
+  const reducedMotion = useReducedMotion();
+  const [isOpen, setIsOpen] = useState(reducedMotion);
 
   useEffect(() => {
+    if (reducedMotion) return;
     const timer = setTimeout(() => setIsOpen(true), 600);
     return () => clearTimeout(timer);
-  }, []);
+  }, [reducedMotion]);
+
+  const instant = reducedMotion;
 
   return (
     <section className="window-hero">
       <AnimatePresence>
-        {!isOpen && (
+        {!isOpen && !instant && (
           <motion.div
             className="window-hero__intro"
             exit={{ opacity: 0 }}
@@ -27,7 +34,7 @@ export default function WindowHero() {
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
             >
-              NEHOC
+              <Logo variant="black" className="logo--hero-intro" />
             </motion.div>
           </motion.div>
         )}
@@ -38,7 +45,7 @@ export default function WindowHero() {
         className="window-hero__shutter window-hero__shutter--left"
         initial={{ x: '0%' }}
         animate={{ x: isOpen ? '-100%' : '0%' }}
-        transition={{ duration: 1.8, ease: [0.76, 0, 0.24, 1], delay: 0.3 }}
+        transition={{ duration: instant ? 0 : 1.8, ease: [0.76, 0, 0.24, 1], delay: instant ? 0 : 0.3 }}
       >
         <div className="window-hero__shutter-inner">
           <div className="window-hero__shutter-frame" />
@@ -51,7 +58,7 @@ export default function WindowHero() {
         className="window-hero__shutter window-hero__shutter--right"
         initial={{ x: '0%' }}
         animate={{ x: isOpen ? '100%' : '0%' }}
-        transition={{ duration: 1.8, ease: [0.76, 0, 0.24, 1], delay: 0.3 }}
+        transition={{ duration: instant ? 0 : 1.8, ease: [0.76, 0, 0.24, 1], delay: instant ? 0 : 0.3 }}
       >
         <div className="window-hero__shutter-inner">
           <div className="window-hero__shutter-frame" />
@@ -72,7 +79,7 @@ export default function WindowHero() {
         className="window-hero__content"
         initial={{ opacity: 0, scale: 1.05 }}
         animate={{ opacity: isOpen ? 1 : 0, scale: isOpen ? 1 : 1.05 }}
-        transition={{ duration: 1.4, ease: [0.22, 1, 0.36, 1], delay: 1.2 }}
+        transition={{ duration: instant ? 0 : 1.4, ease: [0.22, 1, 0.36, 1], delay: instant ? 0 : 1.2 }}
       >
         <div className="window-hero__bg">
           <img
@@ -98,9 +105,9 @@ export default function WindowHero() {
             animate={{ opacity: isOpen ? 1 : 0, y: isOpen ? 0 : 40 }}
             transition={{ delay: 1.8, duration: 1, ease: [0.22, 1, 0.36, 1] }}
           >
-            Se sentir bien
+            Fenêtres aluminium &amp; PVC
             <br />
-            <em>dans la lumière</em>
+            <em>haut de gamme</em>
           </motion.h1>
 
           <motion.p
@@ -135,11 +142,13 @@ export default function WindowHero() {
           transition={{ delay: 2.8, duration: 1 }}
         >
           <span>Défiler</span>
+          {!instant && (
           <motion.div
             className="window-hero__scroll-line"
             animate={{ scaleY: [0, 1, 0] }}
             transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
           />
+          )}
         </motion.div>
       </motion.div>
 

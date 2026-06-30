@@ -24,10 +24,23 @@ export const business = {
   openingHours: ['Mo-Fr 08:00-18:00', 'Sa 09:00-12:00'],
   priceRange: '€€',
   areaServed: ['Marseille', 'PACA', 'Sud de la France'],
+  sameAs: [],
+};
+
+export const legal = {
+  siteUrl: SITE_URL,
+  siret: '', // À compléter
+  rcs: '', // À compléter
+  director: 'Les fondateurs de NEHOC',
+  host: {
+    name: 'Vercel Inc.',
+    address: '440 N Barranca Ave #4133, Covina, CA 91723, États-Unis',
+    url: 'https://vercel.com',
+  },
 };
 
 export const defaultOgImage =
-  'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1200&h=630&fit=crop&q=80&auto=format';
+  `${SITE_URL}/og-image.png`;
 
 export interface PageSeo {
   title: string;
@@ -58,12 +71,12 @@ export const pagesSeo: Record<string, PageSeo> = {
   about: {
     title: 'À Propos | NEHOC — 4 Frères Fondateurs, Passion Menuiserie & Lumière',
     description:
-      'Découvrez NEHOC : quatre frères issus d\'une famille de promoteurs immobiliers, unis par la passion des matériaux et du design. Menuiseries de qualité et conseil sur mesure pour des espaces baignés de lumière.',
+      'Découvrez NEHOC : quatre frères fondateurs unis par la passion des matériaux et du design. Menuiseries de qualité et conseil sur mesure pour des espaces baignés de lumière.',
     path: '/a-propos',
     keywords: [
       'NEHOC fondateurs',
+      'quatre frères menuiserie',
       'menuiserie qualité',
-      'promoteur immobilier menuiserie',
       'conseil menuiserie',
       'luminosité habitat',
       'entreprise menuiserie PACA',
@@ -96,6 +109,19 @@ export const pagesSeo: Record<string, PageSeo> = {
       'showroom menuiserie',
       'installation fenêtres PACA',
     ],
+  },
+  mentionsLegales: {
+    title: 'Mentions légales | NEHOC',
+    description: 'Mentions légales du site NEHOC — éditeur, hébergeur, propriété intellectuelle et responsabilité.',
+    path: '/mentions-legales',
+    keywords: ['mentions légales NEHOC'],
+  },
+  politiqueConfidentialite: {
+    title: 'Politique de confidentialité | NEHOC — RGPD',
+    description:
+      'Politique de confidentialité NEHOC : données collectées, finalités, durée de conservation, vos droits RGPD et gestion des cookies.',
+    path: '/politique-de-confidentialite',
+    keywords: ['politique confidentialité NEHOC', 'RGPD', 'données personnelles'],
   },
 };
 

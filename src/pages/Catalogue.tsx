@@ -66,12 +66,14 @@ export default function Catalogue() {
 
       <section className="catalogue-filters">
         <div className="container">
-          <div className="catalogue-filters__list">
+          <div className="catalogue-filters__list" role="group" aria-label="Filtrer par catégorie">
             {categories.map((cat) => (
               <button
                 key={cat.id}
+                type="button"
                 className={`catalogue-filter ${activeCategory === cat.id ? 'catalogue-filter--active' : ''}`}
                 onClick={() => setActiveCategory(cat.id)}
+                aria-pressed={activeCategory === cat.id}
               >
                 {cat.label}
                 {activeCategory === cat.id && (

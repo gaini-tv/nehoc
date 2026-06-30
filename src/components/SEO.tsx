@@ -16,19 +16,24 @@ interface SEOProps {
 function buildOrganizationSchema() {
   return {
     '@context': 'https://schema.org',
-    '@type': 'HomeAndConstructionBusiness',
+    '@type': ['LocalBusiness', 'HomeAndConstructionBusiness'],
     '@id': `${absoluteUrl('/')}#organization`,
     name: business.name,
     legalName: business.legalName,
     description: business.description,
     url: absoluteUrl('/'),
-    logo: `${absoluteUrl('/')}favicon.svg`,
+    logo: absoluteUrl('/logo-black.png'),
     image: defaultOgImage,
     email: business.email,
     telephone: business.phone,
     priceRange: business.priceRange,
+    founder: {
+      '@type': 'Organization',
+      name: 'Les quatre frères fondateurs de NEHOC',
+    },
     address: {
       '@type': 'PostalAddress',
+      streetAddress: business.address.display,
       addressLocality: business.address.city,
       postalCode: business.address.postalCode,
       addressRegion: business.address.region,
@@ -57,7 +62,33 @@ function buildOrganizationSchema() {
       '@type': 'Place',
       name,
     })),
-    sameAs: [],
+    contactPoint: {
+      '@type': 'ContactPoint',
+      contactType: 'customer service',
+      telephone: business.phone,
+      email: business.email,
+      areaServed: 'FR',
+      availableLanguage: ['fr-FR'],
+    },
+    hasOfferCatalog: {
+      '@type': 'OfferCatalog',
+      name: 'Menuiseries NEHOC',
+      itemListElement: [
+        'Fenêtres aluminium',
+        'Fenêtres PVC',
+        'Portes d’entrée aluminium et verre',
+        'Portes de garage',
+        'Garde-corps aluminium et verre',
+        'Ouvrants motorisés',
+      ].map((name) => ({
+        '@type': 'Offer',
+        itemOffered: {
+          '@type': 'Service',
+          name,
+        },
+      })),
+    },
+    sameAs: business.sameAs,
     knowsAbout: [
       'Fenêtres aluminium',
       'Fenêtres PVC',
@@ -133,6 +164,8 @@ export default function SEO({ seo, jsonLd }: SEOProps) {
       <meta property="og:type" content={seo.ogType || 'website'} />
       <meta property="og:locale" content={SITE_LOCALE} />
       <meta property="og:image" content={defaultOgImage} />
+      <meta property="og:image:secure_url" content={defaultOgImage} />
+      <meta property="og:image:type" content="image/png" />
       <meta property="og:image:width" content="1200" />
       <meta property="og:image:height" content="630" />
       <meta property="og:image:alt" content={`${SITE_NAME} — Menuiseries aluminium & PVC`} />

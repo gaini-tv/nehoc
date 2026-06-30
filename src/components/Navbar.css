@@ -8,12 +8,8 @@
   transition: all 0.6s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-.navbar--on-hero .navbar__logo-text {
-  color: var(--cream-50);
-}
-
 .navbar--on-hero .navbar__link {
-  color: rgba(250, 248, 244, 0.75);
+  color: rgba(250, 248, 244, 0.9);
 }
 
 .navbar--on-hero .navbar__link:hover,
@@ -43,12 +39,10 @@
   justify-content: space-between;
 }
 
-.navbar__logo-text {
-  font-family: var(--font-display);
-  font-size: 1.6rem;
-  font-weight: 500;
-  letter-spacing: 0.35em;
-  color: var(--cream-900);
+.navbar__logo {
+  display: flex;
+  align-items: center;
+  line-height: 0;
 }
 
 .navbar__nav {

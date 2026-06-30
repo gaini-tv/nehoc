@@ -84,12 +84,11 @@ export default function About() {
               <WindowTextReveal className="section-title" as="h2" delay={0.1}>
                 Une histoire de
                 <br />
-                <em>famille & passion</em>
+                <em>passion & exigence</em>
               </WindowTextReveal>
               <div className="divider" />
               <p className="about-intro__text">
-                Issus d'une famille de promoteurs immobiliers et passionnés par
-                les matériaux et le design des habitations et de leur évolution,
+                Passionnés par les matériaux et le design des habitations,
                 les quatre frères fondateurs de NEHOC ont mis leurs forces en
                 commun pour donner lieu à ce qu'ils n'avaient jamais trouvé sur
                 le marché.
@@ -153,6 +152,7 @@ export default function About() {
               comme une nouvelle façon de se sentir bien dans les espaces
               de lumière.
             </p>
+            <footer>— Les fondateurs de NEHOC</footer>
           </WindowTextReveal>
         </div>
       </section>
