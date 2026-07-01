@@ -54,14 +54,16 @@ export function StaggerContainer({
   className = '',
   staggerDelay = 0.12,
   once = true,
+  amount = 0.08,
 }: {
   children: ReactNode;
   className?: string;
   staggerDelay?: number;
   once?: boolean;
+  amount?: number;
 }) {
   const ref = useRef<HTMLDivElement>(null);
-  const isInView = useInView(ref, { once, amount: 0.15 });
+  const isInView = useInView(ref, { once, amount });
 
   const containerVariants: Variants = {
     hidden: {},

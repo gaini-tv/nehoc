@@ -45,4 +45,18 @@ export function catalogueCategoryPath(id: string) {
   return id === 'all' ? '/catalogue' : `/catalogue?category=${id}`;
 }
 
+/** 6 expertises mises en avant sur la page d'accueil */
+export const homeFeaturedExpertiseIds: CategoryId[] = [
+  'fenetres',
+  'baies-coulissantes',
+  'portes-entree',
+  'verandas',
+  'portails-clotures',
+  'garde-corps',
+];
+
+export const homeFeaturedExpertise: CatalogueCategory[] = homeFeaturedExpertiseIds
+  .map((id) => catalogueCategories.find((category) => category.id === id))
+  .filter((category): category is CatalogueCategory => category !== undefined);
+
 export const products = catalogueProducts;

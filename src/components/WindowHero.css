@@ -242,6 +242,18 @@
   pointer-events: none;
 }
 
+@media (max-width: 900px) {
+  .window-hero__title {
+    font-size: clamp(2rem, 7.5vw, 3rem);
+    white-space: normal;
+  }
+
+  .window-hero__text {
+    justify-content: flex-end;
+    padding-bottom: 2rem;
+  }
+}
+
 @media (max-width: 768px) {
   .window-hero__frame {
     inset: 10px;

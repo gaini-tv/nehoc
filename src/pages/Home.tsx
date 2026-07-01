@@ -7,7 +7,7 @@ import WindowTextReveal from '../components/WindowTextReveal';
 import ScrollReveal, { StaggerContainer, StaggerItem } from '../components/ScrollReveal';
 import { ParallaxImage } from '../components/ParallaxSection';
 import ContactCTA from '../components/ContactCTA';
-import { catalogueCategories, catalogueCategoryPath } from '../data/products';
+import { homeFeaturedExpertise } from '../data/products';
 import { images } from '../data/images';
 import { pagesSeo } from '../config/site';
 import './Home.css';
@@ -120,27 +120,29 @@ export default function Home() {
             Nos expertises
           </WindowTextReveal>
 
-          <StaggerContainer className="home-services__grid" staggerDelay={0.08}>
-            {catalogueCategories.map((category) => (
-              <StaggerItem key={category.id}>
-                <div className="service-card">
+          <ScrollReveal delay={0.15} amount={0.08}>
+            <div className="home-services__grid">
+              {homeFeaturedExpertise.map((category) => (
+                <article key={category.id} className="service-card">
                   <div className="service-card__image">
                     <img src={category.image} alt={category.label} loading="lazy" />
                   </div>
                   <div className="service-card__content">
                     <h3>{category.label}</h3>
                     <p>{category.description}</p>
-                    <Link to={catalogueCategoryPath(category.id)} className="service-card__link">
-                      Voir la gamme
-                      <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-                        <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.5" />
-                      </svg>
-                    </Link>
                   </div>
-                </div>
-              </StaggerItem>
-            ))}
-          </StaggerContainer>
+                </article>
+              ))}
+            </div>
+          </ScrollReveal>
+
+          <ScrollReveal delay={0.25} amount={0.1}>
+            <div className="home-services__cta">
+              <Link to="/catalogue" className="btn btn-outline">
+                En savoir plus
+              </Link>
+            </div>
+          </ScrollReveal>
         </div>
       </section>
 

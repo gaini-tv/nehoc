@@ -156,11 +156,6 @@
     );
     pointer-events: auto;
   }
-
-  .window-hero__text {
-    justify-content: flex-end;
-    padding-bottom: 2rem;
-  }
 }
 
 @media (max-width: 500px) {
