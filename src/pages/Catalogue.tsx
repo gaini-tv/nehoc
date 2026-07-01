@@ -6,7 +6,7 @@ import WindowTextReveal from '../components/WindowTextReveal';
 import ContactCTA from '../components/ContactCTA';
 import { products, categories } from '../data/products';
 import { colorPalettes } from '../data/color-palettes';
-import { categoryImages, images } from '../data/images';
+import { categoryBannerImages, categoryImages, images } from '../data/images';
 import { pagesSeo, absoluteUrl } from '../config/site';
 import { useScrollTo } from '../hooks/useScrollTo';
 import './Catalogue.css';
@@ -132,7 +132,7 @@ export default function Catalogue() {
 
   const activeCategoryLabel = categories.find((c) => c.id === activeCategory)?.label;
   const categoryBannerImage =
-    activeCategory !== 'all' ? categoryImages[activeCategory] : images.facade;
+    activeCategory !== 'all' ? categoryBannerImages[activeCategory] : images.facade;
 
   return (
     <div className="catalogue">

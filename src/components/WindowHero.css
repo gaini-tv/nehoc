@@ -163,7 +163,7 @@
 }
 
 .window-hero__title {
-  font-size: clamp(2rem, 4.2vw, 5.25rem);
+  font-size: clamp(1.85rem, 3.6vw, 4rem);
   color: var(--cream-50);
   margin-top: 1.5rem;
   line-height: 1.05;
@@ -244,7 +244,7 @@
 
 @media (max-width: 900px) {
   .window-hero__title {
-    font-size: clamp(2rem, 7.5vw, 3rem);
+    font-size: clamp(1.75rem, 6.5vw, 2.5rem);
     white-space: normal;
   }
 

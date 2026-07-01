@@ -32,7 +32,7 @@
 }
 
 .about-hero__title {
-  font-size: clamp(3rem, 8vw, 5.5rem);
+  font-size: var(--title-hero);
   color: var(--cream-50);
   margin-top: 1rem;
 }

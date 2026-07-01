@@ -3,7 +3,7 @@
 }
 
 .legal-page__title {
-  font-size: clamp(2.5rem, 6vw, 4rem);
+  font-size: var(--title-hero);
   color: var(--cream-900);
   margin-top: 1rem;
 }

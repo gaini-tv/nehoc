@@ -38,7 +38,7 @@ export const images = {
   villa: u('1758448756207-54505680d130', 1920),
 } as const;
 
-/** Images locales catalogue — fiables hors-ligne, une par catégorie */
+/** Images locales catalogue — vignettes produits & cartes */
 export const categoryImages: Record<string, string> = {
   fenetres: '/catalogue/fen-ov70.png',
   'portes-fenetres': '/catalogue/pf-cor3000.jpg',
@@ -56,6 +56,30 @@ export const categoryImages: Record<string, string> = {
   bardages: '/catalogue/bardage-alu.jpg',
   'division-espaces': '/catalogue/aluscreen-parois.jpg',
   'protection-incendie': '/catalogue/pi-mill-fr.jpg',
+  'panneaux-injectes': '/catalogue/panneau-injecte.jpg',
+  'couleurs-poignees': '/catalogue/fin-couleurs.jpg',
+};
+
+/**
+ * Bannières catalogue — visuels architecturaux / lifestyle (pas les coupes techniques).
+ */
+export const categoryBannerImages: Record<string, string> = {
+  fenetres: '/catalogue/bc-soleal.jpg',
+  'portes-fenetres': images.porteFenetre,
+  portes: images.architecture,
+  'baies-coulissantes': '/catalogue/bc-lumeal.jpg',
+  'portes-entree': images.porteEntree,
+  pvc: images.fenetrePvc,
+  facades: images.facade,
+  'portails-clotures': '/catalogue/cloture-palissade.jpg',
+  'carports-pergolas': '/catalogue/carport-alu.jpg',
+  verandas: '/catalogue/veranda-tourmaline.jpg',
+  verrieres: '/catalogue/verriere-interieure.jpg',
+  'volets-brise-soleil': '/catalogue/bs-suneal.jpg',
+  'garde-corps': '/catalogue/gc-gypse.jpg',
+  bardages: images.bardage,
+  'division-espaces': images.divisionEspaces,
+  'protection-incendie': images.protectionIncendie,
   'panneaux-injectes': '/catalogue/panneau-injecte.jpg',
   'couleurs-poignees': '/catalogue/fin-couleurs.jpg',
 };
