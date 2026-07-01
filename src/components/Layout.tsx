@@ -6,10 +6,12 @@ import CookieNotice from './CookieNotice';
 import StickyContact from './StickyContact';
 import { CookieConsentProvider } from '../context/CookieConsentContext';
 import { useReducedMotion } from '../hooks/useReducedMotion';
+import { useAnimatedFavicon } from '../hooks/useAnimatedFavicon';
 
 export default function Layout() {
   const location = useLocation();
   const reducedMotion = useReducedMotion();
+  useAnimatedFavicon();
 
   const pageVariants: Variants = reducedMotion
     ? { initial: { opacity: 1 }, animate: { opacity: 1 }, exit: { opacity: 1 } }
