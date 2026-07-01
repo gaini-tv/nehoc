@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import { business } from '../config/site';
+import { catalogueCategories, catalogueCategoryPath } from '../data/products';
 import { useCookieConsent } from '../context/CookieConsentContext';
 import Logo from './Logo';
 import './Logo.css';
@@ -30,14 +31,14 @@ export default function Footer() {
             <Link to="/contact">Contact</Link>
           </nav>
 
-          <div className="footer__col">
+          <nav className="footer__col footer__col--categories" aria-label="Catégories du catalogue">
             <p className="footer__col-title">Expertises</p>
-            <span>Fenêtres aluminium</span>
-            <span>Fenêtres PVC</span>
-            <span>Serrurerie & Métallerie</span>
-            <span>Garde-corps alu & verre</span>
-            <span>Ouvrants motorisés</span>
-          </div>
+            {catalogueCategories.map((category) => (
+              <Link key={category.id} to={catalogueCategoryPath(category.id)}>
+                {category.label}
+              </Link>
+            ))}
+          </nav>
 
           <div className="footer__col">
             <p className="footer__col-title">Contact</p>

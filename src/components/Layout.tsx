@@ -3,6 +3,7 @@ import { AnimatePresence, motion, type Variants } from 'framer-motion';
 import Navbar from './Navbar';
 import Footer from './Footer';
 import CookieNotice from './CookieNotice';
+import StickyContact from './StickyContact';
 import { CookieConsentProvider } from '../context/CookieConsentContext';
 import { useReducedMotion } from '../hooks/useReducedMotion';
 
@@ -35,6 +36,7 @@ export default function Layout() {
         </motion.main>
       </AnimatePresence>
       <Footer />
+      <StickyContact />
       <CookieNotice />
     </CookieConsentProvider>
   );

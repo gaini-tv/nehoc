@@ -1,70 +1,48 @@
-import { images } from './images';
+import { categoryImages } from './images';
+import { catalogueProducts, categoryMeta, type CategoryId } from './catalogue-products';
 
-export interface Product {
-  id: string;
-  title: string;
-  category: 'aluminium' | 'pvc' | 'serrurerie' | 'garde-corps' | 'ouvrants';
+export type { CategoryId, Product } from './catalogue-products';
+
+export interface CatalogueCategory {
+  id: CategoryId;
+  label: string;
   description: string;
   image: string;
-  features: string[];
 }
 
 export const categories = [
   { id: 'all', label: 'Tout' },
-  { id: 'aluminium', label: 'Aluminium' },
+  { id: 'fenetres', label: 'Fenêtres' },
+  { id: 'portes-fenetres', label: 'Portes-fenêtres' },
+  { id: 'portes', label: 'Portes' },
+  { id: 'baies-coulissantes', label: 'Baies coulissantes' },
+  { id: 'portes-entree', label: 'Portes d\'entrée' },
   { id: 'pvc', label: 'PVC' },
-  { id: 'serrurerie', label: 'Serrurerie' },
+  { id: 'facades', label: 'Façades' },
+  { id: 'portails-clotures', label: 'Portails & clôtures' },
+  { id: 'carports-pergolas', label: 'Carports & pergolas' },
+  { id: 'verandas', label: 'Vérandas' },
+  { id: 'verrieres', label: 'Verrières' },
+  { id: 'volets-brise-soleil', label: 'Volets & brise-soleil' },
   { id: 'garde-corps', label: 'Garde-corps' },
-  { id: 'ouvrants', label: 'Ouvrants' },
+  { id: 'bardages', label: 'Bardages' },
+  { id: 'division-espaces', label: 'Division des espaces' },
+  { id: 'protection-incendie', label: 'Protection incendie' },
+  { id: 'panneaux-injectes', label: 'Panneaux injectés' },
+  { id: 'couleurs-poignees', label: 'Couleurs & poignées' },
 ] as const;
 
-export const products: Product[] = [
-  {
-    id: '1',
-    title: 'Fenêtres aluminium haut de gamme',
-    category: 'aluminium',
-    description: 'Menuiseries aluminium d\'exception à prix compétitifs. Performance thermique, design épuré et durabilité pour sublimer chaque façade.',
-    image: images.fenetreAlu,
-    features: ['Haut de gamme', 'Prix compétitifs', 'Tous coloris'],
-  },
-  {
-    id: '2',
-    title: 'Fenêtres PVC',
-    category: 'pvc',
-    description: 'Fenêtres PVC performantes et accessibles. Excellente isolation, entretien minimal et large choix de finitions pour tous les projets.',
-    image: images.fenetrePvc,
-    features: ['Isolation renforcée', 'Entretien facile', 'Sur mesure'],
-  },
-  {
-    id: '3',
-    title: 'Porte d\'entrée alu & verre',
-    category: 'serrurerie',
-    description: 'Portes d\'entrée alliant aluminium et verre pour une luminosité maximale. Sécurité, design et personnalisation au service de votre habitat.',
-    image: images.porteEntree,
-    features: ['Alu & verre', 'Haute sécurité', 'Design sur mesure'],
-  },
-  {
-    id: '4',
-    title: 'Porte de garage',
-    category: 'serrurerie',
-    description: 'Portes de garage sectionnelles, basculantes ou enroulables. Motorisation silencieuse et finitions coordonnées à votre menuiserie.',
-    image: images.porteGarage,
-    features: ['Motorisation', 'Isolation thermique', 'Finitions assorties'],
-  },
-  {
-    id: '5',
-    title: 'Garde-corps alu & verre',
-    category: 'garde-corps',
-    description: 'Garde-corps en aluminium et verre pour balcons, terrasses et escaliers. Transparence et sécurité sans compromis sur l\'esthétique.',
-    image: images.gardeCorps,
-    features: ['Alu & verre', 'Normes NF', 'Sur mesure'],
-  },
-  {
-    id: '6',
-    title: 'Fenêtres ouvrantes motorisées',
-    category: 'ouvrants',
-    description: 'Ouvrants motorisés, à galandage ou encastrés. Tous coloris et toutes finitions pour une ouverture sur mesure, en toute simplicité.',
-    image: images.ouvrant,
-    features: ['Motorisé', 'Galandage & encastré', 'Toutes finitions'],
-  },
-];
+export const catalogueCategories: CatalogueCategory[] = categories
+  .filter((cat) => cat.id !== 'all')
+  .map((cat) => ({
+    id: cat.id as CategoryId,
+    label: cat.label,
+    description: categoryMeta[cat.id as CategoryId].description,
+    image: categoryImages[cat.id],
+  }));
+
+export function catalogueCategoryPath(id: string) {
+  return id === 'all' ? '/catalogue' : `/catalogue?category=${id}`;
+}
+
+export const products = catalogueProducts;

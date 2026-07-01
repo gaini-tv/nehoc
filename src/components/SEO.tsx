@@ -7,6 +7,7 @@ import {
   absoluteUrl,
   type PageSeo,
 } from '../config/site';
+import { catalogueCategories } from '../data/products';
 
 interface SEOProps {
   seo: PageSeo;
@@ -73,30 +74,17 @@ function buildOrganizationSchema() {
     hasOfferCatalog: {
       '@type': 'OfferCatalog',
       name: 'Menuiseries NEHOC',
-      itemListElement: [
-        'Fenêtres aluminium',
-        'Fenêtres PVC',
-        'Portes d’entrée aluminium et verre',
-        'Portes de garage',
-        'Garde-corps aluminium et verre',
-        'Ouvrants motorisés',
-      ].map((name) => ({
+      itemListElement: catalogueCategories.map((category) => ({
         '@type': 'Offer',
         itemOffered: {
           '@type': 'Service',
-          name,
+          name: category.label,
+          description: category.description,
         },
       })),
     },
     sameAs: business.sameAs,
-    knowsAbout: [
-      'Fenêtres aluminium',
-      'Fenêtres PVC',
-      'Portes d\'entrée',
-      'Garde-corps',
-      'Ouvrants motorisés',
-      'Menuiserie sur mesure',
-    ],
+    knowsAbout: catalogueCategories.map((category) => category.label),
   };
 }
 

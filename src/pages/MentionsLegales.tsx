@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import ContactCTA from '../components/ContactCTA';
 import SEO from '../components/SEO';
 import { business, legal, pagesSeo } from '../config/site';
 import './Legal.css';
@@ -81,6 +82,12 @@ export default function MentionsLegales() {
           </p>
         </div>
       </div>
+
+      <ContactCTA
+        variant="compact"
+        description="Besoin d'un renseignement ou d'un devis ? Notre équipe est à votre écoute."
+        showCatalogue
+      />
     </article>
   );
 }

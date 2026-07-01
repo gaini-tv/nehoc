@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import Logo from './Logo';
+import HeroCategoryTiles from './HeroCategoryTiles';
 import { images } from '../data/images';
 import { useReducedMotion } from '../hooks/useReducedMotion';
 import './Logo.css';
@@ -105,9 +106,7 @@ export default function WindowHero() {
             animate={{ opacity: isOpen ? 1 : 0, y: isOpen ? 0 : 40 }}
             transition={{ delay: 1.8, duration: 1, ease: [0.22, 1, 0.36, 1] }}
           >
-            Fenêtres aluminium &amp; PVC
-            <br />
-            <em>haut de gamme</em>
+            Menuiseries aluminium <em>haut de gamme</em>
           </motion.h1>
 
           <motion.p
@@ -116,8 +115,8 @@ export default function WindowHero() {
             animate={{ opacity: isOpen ? 1 : 0, y: isOpen ? 0 : 30 }}
             transition={{ delay: 2, duration: 0.8 }}
           >
-            Fenêtres haut de gamme, serrurerie, garde-corps et ouvrants
-            motorisés — qualité, conseil et luminosité pour chaque habitat.
+            Fenêtres, portes, baies coulissantes, façades, vérandas, garde-corps
+            et toutes finitions — qualité, conseil et luminosité pour chaque habitat.
           </motion.p>
 
           <motion.div
@@ -134,6 +133,8 @@ export default function WindowHero() {
             </Link>
           </motion.div>
         </div>
+
+        <HeroCategoryTiles visible={isOpen} />
 
         <motion.div
           className="window-hero__scroll"

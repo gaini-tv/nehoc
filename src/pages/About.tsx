@@ -4,15 +4,16 @@ import SEO from '../components/SEO';
 import WindowTextReveal from '../components/WindowTextReveal';
 import ScrollReveal, { StaggerContainer, StaggerItem } from '../components/ScrollReveal';
 import { ParallaxImage } from '../components/ParallaxSection';
+import ContactCTA from '../components/ContactCTA';
 import { images } from '../data/images';
 import { pagesSeo } from '../config/site';
 import './About.css';
 
-const brothers = [
-  { number: 'I', role: 'Vision & matériaux' },
-  { number: 'II', role: 'Design & habitat' },
-  { number: 'III', role: 'Conseil & expérience' },
-  { number: 'IV', role: 'Qualité & luminosité' },
+const founders = [
+  { name: 'Nathaniel', image: '/nathaniel.png' },
+  { name: 'Emmanuel', image: '/emmanuel.png' },
+  { name: 'Eliott', image: '/eliott.png' },
+  { name: 'Mickaël', image: '/michael.png' },
 ];
 
 const values = [
@@ -128,12 +129,12 @@ export default function About() {
           </ScrollReveal>
 
           <StaggerContainer className="about-brothers__grid" staggerDelay={0.1}>
-            {brothers.map((brother) => (
-              <StaggerItem key={brother.number}>
-                <div className="brother-card">
-                  <span className="brother-card__number">{brother.number}</span>
-                  <p className="brother-card__role">{brother.role}</p>
-                </div>
+            {founders.map((founder) => (
+              <StaggerItem key={founder.name}>
+                <article className="founder-card">
+                  <img src={founder.image} alt={founder.name} loading="lazy" />
+                  <span className="founder-card__name">{founder.name}</span>
+                </article>
               </StaggerItem>
             ))}
           </StaggerContainer>
@@ -178,6 +179,17 @@ export default function About() {
           </StaggerContainer>
         </div>
       </section>
+
+      <ContactCTA
+        title={
+          <>
+            Travaillons
+            <br />
+            <em>ensemble</em>
+          </>
+        }
+        description="Vous avez un projet de rénovation ou de construction ? Parlons-en — conseil personnalisé et devis gratuit sous 48h."
+      />
     </div>
   );
 }

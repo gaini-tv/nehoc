@@ -6,6 +6,8 @@ import WindowTextReveal from '../components/WindowTextReveal';
 import ScrollReveal from '../components/ScrollReveal';
 import { images } from '../data/images';
 import { pagesSeo, business, absoluteUrl } from '../config/site';
+import { catalogueCategories } from '../data/products';
+import { supplierCatalogues } from '../data/supplier-catalogues';
 import './Contact.css';
 
 export default function Contact() {
@@ -15,8 +17,14 @@ export default function Contact() {
     name: '',
     email: '',
     phone: '',
-    project: 'aluminium',
+    project: catalogueCategories[0]?.id ?? 'fenetres',
     message: '',
+  } as {
+    name: string;
+    email: string;
+    phone: string;
+    project: string;
+    message: string;
   });
 
   const handleSubmit = (e: FormEvent) => {
@@ -56,7 +64,79 @@ export default function Contact() {
               Notre équipe vous répond sous 48h pour une première
               consultation gratuite et sans engagement.
             </p>
+            <div className="contact-hero__actions">
+              <a href={`tel:${business.phone}`} className="btn btn-primary">
+                {business.phoneDisplay}
+              </a>
+              <Link to="/catalogue" className="btn btn-outline">
+                Voir le catalogue
+              </Link>
+            </div>
           </motion.div>
+        </div>
+      </section>
+
+      <section className="contact-catalogues" aria-labelledby="catalogues-title">
+        <div className="container">
+          <ScrollReveal>
+            <span className="section-label">Documentation</span>
+            <h2 id="catalogues-title" className="contact-catalogues__title">
+              Télécharger les catalogues
+            </h2>
+            <p className="contact-catalogues__intro">
+              Brochures officielles de nos fournisseurs — formats PDF lorsque disponibles.
+            </p>
+          </ScrollReveal>
+
+          <div className="contact-catalogues__grid">
+            {supplierCatalogues.map((catalogue, index) => (
+              <ScrollReveal key={catalogue.id} delay={0.08 * index}>
+                <article className="catalogue-card">
+                  <span className="catalogue-card__brand">{catalogue.brand}</span>
+                  <h3 className="catalogue-card__title">{catalogue.title}</h3>
+                  <p className="catalogue-card__text">{catalogue.description}</p>
+                  {catalogue.pdfUrl ? (
+                    <a
+                      href={catalogue.pdfUrl}
+                      className="catalogue-card__btn"
+                      download={catalogue.fileLabel}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
+                        <path
+                          d="M9 2v9M9 11l3.5-3.5M9 11 5.5 7.5M3 14h12"
+                          stroke="currentColor"
+                          strokeWidth="1.5"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                        />
+                      </svg>
+                      Télécharger le PDF
+                    </a>
+                  ) : (
+                    <a
+                      href={catalogue.onlineUrl}
+                      className="catalogue-card__btn catalogue-card__btn--outline"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
+                        <path
+                          d="M7 3H3v12h12V9M10 2h6v6M8 10l8-8"
+                          stroke="currentColor"
+                          strokeWidth="1.5"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                        />
+                      </svg>
+                      Voir le catalogue en ligne
+                    </a>
+                  )}
+                </article>
+              </ScrollReveal>
+            ))}
+          </div>
         </div>
       </section>
 
@@ -160,12 +240,12 @@ export default function Contact() {
                             value={form.project}
                             onChange={(e) => setForm({ ...form, project: e.target.value })}
                           >
-                            <option value="aluminium">Fenêtres aluminium</option>
-                            <option value="pvc">Fenêtres PVC</option>
-                            <option value="serrurerie">Serrurerie & Métallerie</option>
-                            <option value="garde-corps">Garde-corps</option>
-                            <option value="ouvrants">Ouvrants motorisés</option>
-                            <option value="autre">Autre</option>
+                            {catalogueCategories.map((category) => (
+                              <option key={category.id} value={category.id}>
+                                {category.label}
+                              </option>
+                            ))}
+                            <option value="autre">Autre / Plusieurs catégories</option>
                           </select>
                         </div>
                       </div>

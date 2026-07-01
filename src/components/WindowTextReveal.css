@@ -97,7 +97,8 @@
   margin-top: 1rem;
 }
 
-.window-text-reveal.home-cta__title {
+.window-text-reveal.home-cta__title,
+.window-text-reveal.contact-cta__title {
   display: block;
 }
 
@@ -119,6 +120,7 @@
 
 .section-title em,
 .home-cta__title em,
+.contact-cta__title em,
 .about-hero__title em,
 .contact-hero__title em {
   font-style: italic;

@@ -1,3 +1,4 @@
+import ContactCTA from '../components/ContactCTA';
 import SEO from '../components/SEO';
 import { business, legal, pagesSeo } from '../config/site';
 import './Legal.css';
@@ -141,6 +142,13 @@ export default function PolitiqueConfidentialite() {
           </p>
         </div>
       </div>
+
+      <ContactCTA
+        variant="compact"
+        title="Une question sur vos données ?"
+        description="Contactez-nous pour toute demande relative à vos informations personnelles ou à l'exercice de vos droits."
+        showCatalogue={false}
+      />
     </article>
   );
 }

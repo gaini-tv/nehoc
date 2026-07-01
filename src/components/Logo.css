@@ -5,7 +5,12 @@
 }
 
 .logo--nav {
-  height: 64px;
+  height: 104px;
+  transition: height 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.navbar--on-hero .logo--nav {
+  height: 115px;
 }
 
 .logo--footer {
@@ -20,6 +25,10 @@
 @media (max-width: 768px) {
   .logo--nav {
     height: 50px;
+  }
+
+  .navbar--on-hero .logo--nav {
+    height: 115px;
   }
 
   .logo--footer {
